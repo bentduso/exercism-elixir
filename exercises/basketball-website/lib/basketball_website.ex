@@ -1,13 +1,4 @@
 defmodule BasketballWebsite do
-  # data = %{
-  #   "team_mascot" => %{
-  #     "animal" => "bear",
-  #     "actor" => %{
-  #       "first_name" => "Noel"
-  #     }
-  #   }
-  # }
-
   def extract_from_path(data, path) do
     keys = String.split(path, ".")
     traverse(data, keys)
