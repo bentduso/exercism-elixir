@@ -8,28 +8,24 @@ defmodule ListOps do
   @spec count(list) :: non_neg_integer
   def count(l), do: do_count(l, 0)
 
-  @spec do_count(list, non_neg_integer) :: non_neg_integer
   defp do_count([], acc), do: acc
   defp do_count([_head | tail], acc), do: do_count(tail, acc + 1)
 
   @spec reverse(list) :: list
   def reverse(l), do: do_reverse(l, [])
 
-  @spec do_reverse(list, list) :: list
   defp do_reverse([], acc), do: acc
   defp do_reverse([head | tail], acc), do: do_reverse(tail, [head | acc])
 
   @spec map(list, (any -> any)) :: list
   def map(l, f), do: do_map(l, f, [])
 
-  @spec do_map(list, (any -> any), list) :: list
   defp do_map([], _f, acc), do: reverse(acc)
   defp do_map([head | tail], f, acc), do: do_map(tail, f, [f.(head) | acc])
 
   @spec filter(list, (any -> as_boolean(term))) :: list
   def filter(l, f), do: do_filter(l, f, [])
 
-  @spec do_filter(list, (any -> as_boolean(term)), list) :: list
   defp do_filter([], _f, acc), do: reverse(acc)
 
   defp do_filter([head | tail], f, acc) do
